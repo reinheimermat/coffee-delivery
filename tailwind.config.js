@@ -26,6 +26,9 @@ export default {
         title: ["'Baloo 2'", 'sans-serif'],
         text: ['Roboto', 'sans-serif'],
       },
+      backgroundImage: {
+        image: "url('./background.png')",
+      },
     },
   },
   plugins: [],

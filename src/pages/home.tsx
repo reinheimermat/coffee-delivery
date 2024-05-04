@@ -67,15 +67,17 @@ export function Home() {
         </div>
       </section>
 
-      <div>
-        <h2>Nossos cafés</h2>
+      <section className="container mx-auto max-w-[70rem]">
+        <h2 className="font-title text-baseSubtitle my-9 text-4xl font-extrabold">
+          Nossos cafés
+        </h2>
 
-        <div>
+        <div className="mt-5 flex flex-wrap gap-8">
           {coffees.map((coffee) => (
             <Card key={coffee.id} coffee={coffee} />
           ))}
         </div>
-      </div>
+      </section>
     </main>
   )
 }

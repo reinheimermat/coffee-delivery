@@ -1,4 +1,6 @@
 import { ShoppingCartSimple } from '@phosphor-icons/react'
+import { QuantityInput } from './quantityInput'
+import { useState } from 'react'
 
 interface CardProps {
   coffee: {
@@ -12,6 +14,18 @@ interface CardProps {
 }
 
 export function Card({ coffee }: CardProps) {
+  const [quantity, setQuantity] = useState(1)
+
+  function incrementQuantity() {
+    setQuantity((state) => state + 1)
+  }
+
+  function decrementQuantity() {
+    if (quantity > 1) {
+      setQuantity((state) => state - 1)
+    }
+  }
+
   return (
     <div className="bg-baseCard flex max-w-64 flex-col items-center rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] px-6 pb-5 text-center">
       <img className="-mt-5 mb-4" src={coffee.image} alt={coffee.title} />
@@ -41,11 +55,18 @@ export function Card({ coffee }: CardProps) {
           </span>
         </div>
 
-        <div>
-          {/* Input */}
+        <div className="flex items-center gap-2">
+          <QuantityInput
+            quantity={quantity}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+          />
 
           <button className="bg-purpleDark hover:bg-purple rounded-md p-2">
-            <ShoppingCartSimple weight="fill" className="text-baseCard" />
+            <ShoppingCartSimple
+              weight="fill"
+              className="text-baseCard text-2xl"
+            />
           </button>
         </div>
       </div>

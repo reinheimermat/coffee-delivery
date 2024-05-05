@@ -1,7 +1,13 @@
+import { Header } from './components/header'
 import { Home } from './pages/home'
 
 function App() {
-  return <Home />
+  return (
+    <div>
+      <Header />
+      <Home />
+    </div>
+  )
 }
 
 export default App

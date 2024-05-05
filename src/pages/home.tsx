@@ -7,7 +7,7 @@ export function Home() {
     <main>
       <section className="bg-image h-[34rem] bg-cover bg-no-repeat object-cover">
         <div className="container mx-auto max-w-[70rem]">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-24">
             <article className="max-w-[36.75rem]">
               <div className="mb-16">
                 <h1 className="text-baseTitle font-title mb-4 text-5xl font-extrabold">

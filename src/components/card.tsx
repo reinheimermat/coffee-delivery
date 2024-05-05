@@ -27,7 +27,7 @@ export function Card({ coffee }: CardProps) {
   }
 
   return (
-    <div className="bg-baseCard flex max-w-64 flex-col items-center rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] px-6 pb-5 text-center">
+    <div className="bg-baseCard flex max-w-64 flex-col items-center justify-between rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] px-6 pb-5 text-center">
       <img className="-mt-5 mb-4" src={coffee.image} alt={coffee.title} />
 
       <div>

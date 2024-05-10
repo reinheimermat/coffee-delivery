@@ -1,12 +1,13 @@
 import { Header } from './components/header'
-import { Home } from './pages/home'
+import { Outlet } from 'react-router-dom'
+import { CartContextProvider } from './contexts/cartProvider'
 
 function App() {
   return (
-    <div>
+    <CartContextProvider>
       <Header />
-      <Home />
-    </div>
+      <Outlet />
+    </CartContextProvider>
   )
 }
 

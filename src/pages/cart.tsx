@@ -103,7 +103,7 @@ export function Cart() {
   return (
     <main className="container mx-auto flex max-w-[70rem] gap-8">
       <section>
-        <h1 className="font-title text-lg font-bold text-baseSubtitle">
+        <h1 className="mb-4 font-title text-lg font-bold text-baseSubtitle">
           Complete seu pedido
         </h1>
 
@@ -138,8 +138,9 @@ export function Cart() {
               />
               <TextInput
                 placeholder="Número"
+                type="number"
                 error={errors.number}
-                {...register('number')}
+                {...register('number', { valueAsNumber: true })}
                 columns="col-span-1"
               />
               <TextInput
@@ -171,7 +172,7 @@ export function Cart() {
             </div>
           </section>
 
-          <section className="rounded-md bg-baseCard p-10">
+          <section className="w-full max-w-2xl rounded-md bg-baseCard p-10">
             <div className="flex gap-2">
               <CurrencyDollar size={24} className="text-purple" />
 
@@ -223,46 +224,56 @@ export function Cart() {
           </section>
         </form>
       </section>
-      <section>
-        <h1 className="font-title text-lg font-bold text-baseSubtitle">
+
+      <section className="w-full max-w-md">
+        <h1 className="mb-4 font-title text-lg font-bold text-baseSubtitle">
           Cafés selecionados
         </h1>
 
-        <div>
+        <div className="rounded-bl-[2.75rem] rounded-br-md rounded-tl-md rounded-tr-[2.75rem] bg-baseCard p-10">
           {coffeesInCart.map((coffee) => (
             <Fragment key={coffee.id}>
-              <div className="flex">
-                <div className="flex">
-                  <img src={coffee.image} alt={coffee.title} />
+              <div className="flex items-start justify-between">
+                <div className="flex gap-5">
+                  <img
+                    src={coffee.image}
+                    alt={coffee.title}
+                    className="size-16"
+                  />
 
-                  <div className="flex">
-                    <span>{coffee.title}</span>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-baseSubtitle">{coffee.title}</span>
 
-                    <div>
+                    <div className="flex gap-2">
                       <QuantityInput
                         quantity={coffee.quantity}
                         incrementQuantity={() => handleItemIncrement(coffee.id)}
                         decrementQuantity={() => handleItemDecrement(coffee.id)}
                       />
 
-                      <button onClick={() => handleItemRemove(coffee.id)}>
-                        <Trash />
+                      <button
+                        onClick={() => handleItemRemove(coffee.id)}
+                        className="flex items-center gap-1 rounded-md bg-baseButton p-2 text-xs uppercase text-baseText hover:bg-baseHover"
+                      >
+                        <Trash className="size-4 text-purple" />
                         <span>Remover</span>
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <aside>R$ {coffee.price?.toFixed(2)}</aside>
+                <aside className="font-bold text-baseText">
+                  R$ {coffee.price?.toFixed(2)}
+                </aside>
               </div>
 
-              <span />
+              <hr className="my-6" />
             </Fragment>
           ))}
 
-          <div>
-            <div>
-              <span>Total de itens</span>
+          <div className="flex flex-col gap-3">
+            <div className="flex justify-between text-baseText">
+              <span className="text-sm">Total de itens</span>
               <span>
                 {new Intl.NumberFormat('pt-br', {
                   currency: 'BRL',
@@ -271,8 +282,8 @@ export function Cart() {
               </span>
             </div>
 
-            <div>
-              <span>Entrega</span>
+            <div className="flex justify-between text-baseText">
+              <span className="text-sm">Entrega</span>
               <span>
                 {new Intl.NumberFormat('pt-br', {
                   currency: 'BRL',
@@ -281,7 +292,7 @@ export function Cart() {
               </span>
             </div>
 
-            <div>
+            <div className="flex justify-between text-xl font-bold text-baseSubtitle">
               <span>Total</span>
               <span>
                 {new Intl.NumberFormat('pt-br', {
@@ -292,7 +303,11 @@ export function Cart() {
             </div>
           </div>
 
-          <button type="submit" form="order">
+          <button
+            type="submit"
+            form="order"
+            className="mt-6 w-full rounded-md bg-yellow py-3 text-center text-sm font-bold uppercase text-white hover:bg-yellowDark"
+          >
             Confirmar pedido
           </button>
         </div>

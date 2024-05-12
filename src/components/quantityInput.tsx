@@ -12,13 +12,13 @@ export function QuantityInput({
   decrementQuantity,
 }: QuantityInputProps) {
   return (
-    <div className="bg-baseButton flex gap-1 rounded-md px-2 py-2">
+    <div className="flex gap-1 rounded-md bg-baseButton px-2 py-2 hover:bg-baseHover">
       <button onClick={decrementQuantity}>
-        <Minus className="text-purple size-4" weight="bold" />
+        <Minus className="size-4 text-purple" weight="bold" />
       </button>
-      <span>{quantity}</span>
-      <button className="bg-baseButton text-purple" onClick={incrementQuantity}>
-        <Plus className="size-4" weight="bold" />
+      <span className="px-1">{quantity}</span>
+      <button onClick={incrementQuantity}>
+        <Plus className="size-4 text-purple" weight="bold" />
       </button>
     </div>
   )

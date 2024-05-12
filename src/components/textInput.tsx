@@ -53,7 +53,7 @@ export const TextInput = forwardRef(function TextInput(
       </label>
 
       {error?.message ? (
-        <span role="alert" className="text-xs text-red-600">
+        <span role="alert" className="px-1 text-xs text-red-600">
           {error.message}
         </span>
       ) : null}
